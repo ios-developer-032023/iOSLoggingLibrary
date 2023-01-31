@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import iOSLoggingLibrary
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let logger = Logger()
+        logger.printLog()
+        
+        let frameworkBundle = Bundle(for: Logger.self)
+        let path = frameworkBundle.path(forResource: "Resources", ofType: "bundle")
+        let resourceBundle = Bundle(url: URL(fileURLWithPath: path!))
+        let image = UIImage(named: "coast.jpg", in: resourceBundle, compatibleWith: nil)
+        print(image)
     }
 
     override func didReceiveMemoryWarning() {
